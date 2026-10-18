@@ -22,6 +22,12 @@ architecture of the private Agent Workflows project. It is not a source mirror,
 consumer integration or replacement for that engine. No proprietary prompt, rubric,
 or production publication policy is included.
 
+### A concrete revision change
+
+Candidate A has passing check records and approvals bound to A's SHA label, content digest and evidence digest. A developer then supplies candidate B. Reusing A's approvals for B yields `stale_review` and blocks the handoff, even if the source content is unchanged. Changing a check artifact also invalidates approvals bound to the previous evidence digest. B needs fresh, matching checks and approvals to become ready for human review.
+
+The `stale-review` scenario demonstrates that rejection. The `recovered` scenario below demonstrates a different path: a first attempt receives `changes_requested`, then a second candidate has matching passing checks and approvals. Both attempts are supplied fixtures; the program does not perform the revision or obtain reviews.
+
 ## Run in two minutes
 
 Requires Node.js **22.13+ (22.x), or 24+**, and npm.
@@ -34,6 +40,15 @@ node src/cli.mjs list
 node src/cli.mjs run --scenario recovered --output pipeline-output/recovered
 node src/cli.mjs verify --bundle pipeline-output/recovered/bundle.json --report pipeline-output/recovered/report.json
 ```
+
+The `run` and `verify` commands print, respectively:
+
+```text
+ready-for-human-review (synthetic; no publication)
+report_verified (consistency only)
+```
+
+The report contains two evaluated attempts: attempt 1 is `rejected` with reason `changes_requested`; attempt 2 is `accepted`. The final status is `ready-for-human-review`, with the second synthetic SHA accepted. This means the supplied records satisfy the example policy, not that tests or reviewers were executed. All execution/publication authority fields remain false.
 
 Inspect `pipeline-output/recovered/report.md` or the checked-in
 [example report](examples/report.md). A run exports its synthetic audit bundle,
@@ -78,6 +93,26 @@ records, invalid paths, bounded attempts, report edits, example freshness, CLI e
 codes, output conflicts, malformed inputs and network-blocked runtime. The fixtures
 are **simulated checks and reviewer verdicts**; they do not prove that candidate
 tests or independent AI reviews actually ran.
+
+## Author contribution
+
+MargusHemlex designed the portfolio's review invariants and public/private boundary, with AI-assisted implementation and review. The technical work made explicit here is:
+
+- Binding candidate SHA labels and content digests to check artifacts, then binding reviews to the complete current evidence digest.
+- Defining closed contracts, duplicate/path validation and bounded evaluation of supplied attempts.
+- Producing deterministic reports and verifying them by recomputing the full outcome rather than trusting a reported status.
+- Keeping raw synthetic source/logs out of summaries and using controlled CLI errors, with regression tests for stale evidence, tampering and output conflicts.
+
+These are application-level evaluator decisions. Reviewer names in fixtures are labels; they do not establish independent identities or real review execution. The original engine's code, prompts and production policies are outside this repository.
+
+## Relationship to Agent Reliability Lab
+
+| Project                                                                        | Question it demonstrates                                                        | Executable evidence                                                                                 |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| This review pipeline                                                           | Do the candidate, checks and approvals refer to the same revision and evidence? | Offline evaluation of supplied synthetic bundles, rejection cases and report recomputation          |
+| [Agent Reliability Lab](https://github.com/MargusHemlex/agent-reliability-lab) | What happens when an approved workflow's worker dies around an external write?  | Worker crash/restart experiments, persisted approval/budgets and independent receiver effect counts |
+
+This repository demonstrates review consistency and human handoff. Agent Reliability Lab demonstrates workflow execution and recovery in its documented single-host topology. They are separate portfolio projects, with no runtime dependency or integration between them; this evaluator does not become a live orchestrator by selecting a different fixture.
 
 ## Engineering guide
 

@@ -39,3 +39,11 @@ use controlled codes, never submitted source, logs or raw filesystem/provider er
 The human handoff boundary is explicit: all execution, model-call, push, merge and
 deploy authority fields are false. There is no publisher, worker runtime, model
 adapter, Git client, token flow, remote repository integration or production contract.
+
+## Trace a revision through the boundary
+
+For an accepted candidate A, each check binds A's SHA label and content digest; each review also binds the digest of the complete check collection. Candidate B cannot inherit that approval: a different SHA label produces `stale_review`, even if its source content matches A. If check content changes, its log digest must validate and the resulting evidence digest must match each review. Consistent but stale records are rejected by evaluation; internally inconsistent artifact digests are rejected by contract validation.
+
+In `recovered`, the first predefined attempt is rejected for `changes_requested`. The second supplies a fresh candidate and matching check/review records and is accepted within the two-attempt ceiling. This is evaluation of supplied history, not execution of an edit/retest/review loop.
+
+The design responsibilities described in the [README author contribution](../README.md#author-contribution) belong to this standalone evaluator. [Agent Reliability Lab](https://github.com/MargusHemlex/agent-reliability-lab) separately exercises real worker lifecycle and receiver-effect recovery. No worker, receipt database or production integration is implied by this pipeline's diagram.
