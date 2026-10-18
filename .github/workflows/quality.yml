@@ -1,0 +1,26 @@
+name: Quality
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run check
+      - run: npm audit
+      - name: Exercise offline fixture export and verification
+        run: |
+          node src/cli.mjs run --scenario recovered --output pipeline-output/accepted
+          node src/cli.mjs verify --bundle pipeline-output/accepted/bundle.json --report pipeline-output/accepted/report.json

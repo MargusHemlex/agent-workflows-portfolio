@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "report-v1",
+  "source": "synthetic",
+  "bundleDigest": "sha256:77aa19409e70cb8efe0dc45d30739a1c55afb66cbfa56e9b4c73d901ced3e05b",
+  "policy": {
+    "maxAttempts": 2,
+    "requiredChecks": ["lint", "tests"],
+    "requiredReviewers": ["quality", "security"]
+  },
+  "status": "ready-for-human-review",
+  "acceptedHeadSha": "2222222222222222222222222222222222222222",
+  "evaluatedAttempts": 2,
+  "ignoredAttempts": 0,
+  "attempts": [
+    {
+      "attempt": 1,
+      "headSha": "1111111111111111111111111111111111111111",
+      "contentDigest": "sha256:06ace57d5fd838581268166b7cb3e41ac8bcd9f09d18fc6e06de9cf5e171cb6d",
+      "evidenceDigest": "sha256:60144f2867fea53d874af47a615cc45f3c8c0df238b162030656a67a2c876e59",
+      "status": "rejected",
+      "reasons": ["changes_requested"]
+    },
+    {
+      "attempt": 2,
+      "headSha": "2222222222222222222222222222222222222222",
+      "contentDigest": "sha256:96498ac5690ab4b48dfca7931dd0d015549ae5328c35a45e00f79af278e17f78",
+      "evidenceDigest": "sha256:cf90409df9b1c5b01c0c6c428f55ae8101fe1d7c02c9030ad4cb8b1462ce96b6",
+      "status": "accepted",
+      "reasons": []
+    }
+  ],
+  "authority": {
+    "executeCode": false,
+    "modelCalls": false,
+    "push": false,
+    "merge": false,
+    "deploy": false
+  },
+  "limitations": [
+    "Synthetic SHAs are labels, not verified Git objects.",
+    "Digest binding checks consistency, not authenticity or proof that checks actually ran.",
+    "Reviewer roles are fixture labels, not independent identities or real AI assessments.",
+    "A ready result only prepares a human handoff; it authorizes no external action."
+  ],
+  "reportDigest": "sha256:2ea5e84be890cac5115200ab15246aad6cdba77d74f4e62f67fe4b8b6a474f1e"
+}

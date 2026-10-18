@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+pipeline-output
+coverage
+# Preserve generated Markdown byte-for-byte for freshness tests.
+examples/report.md

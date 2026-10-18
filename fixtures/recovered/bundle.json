@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "bundle-v1",
+  "source": "synthetic",
+  "policy": {
+    "maxAttempts": 2,
+    "requiredChecks": ["lint", "tests"],
+    "requiredReviewers": ["quality", "security"]
+  },
+  "attempts": [
+    {
+      "candidate": {
+        "baseSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "headSha": "1111111111111111111111111111111111111111",
+        "files": [
+          {
+            "path": "src/example.mjs",
+            "content": "// Synthetic candidate 1; never executed.\nexport const value = 1;\n"
+          }
+        ],
+        "contentDigest": "sha256:06ace57d5fd838581268166b7cb3e41ac8bcd9f09d18fc6e06de9cf5e171cb6d"
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "headSha": "1111111111111111111111111111111111111111",
+          "contentDigest": "sha256:06ace57d5fd838581268166b7cb3e41ac8bcd9f09d18fc6e06de9cf5e171cb6d",
+          "status": "passed",
+          "log": "synthetic lint: passed",
+          "logDigest": "sha256:decc710faf16ea71236591f66ca36f552d9604bd22b3e9faf5aad4a821b3976c"
+        },
+        {
+          "name": "tests",
+          "headSha": "1111111111111111111111111111111111111111",
+          "contentDigest": "sha256:06ace57d5fd838581268166b7cb3e41ac8bcd9f09d18fc6e06de9cf5e171cb6d",
+          "status": "passed",
+          "log": "synthetic tests: passed",
+          "logDigest": "sha256:5ff6e15b0875a6832abba15f3727c342bdb3a3895e7ba0ad7f7ea10edadd0896"
+        }
+      ],
+      "reviews": [
+        {
+          "reviewer": "quality",
+          "headSha": "1111111111111111111111111111111111111111",
+          "contentDigest": "sha256:06ace57d5fd838581268166b7cb3e41ac8bcd9f09d18fc6e06de9cf5e171cb6d",
+          "evidenceDigest": "sha256:60144f2867fea53d874af47a615cc45f3c8c0df238b162030656a67a2c876e59",
+          "verdict": "changes-requested"
+        },
+        {
+          "reviewer": "security",
+          "headSha": "1111111111111111111111111111111111111111",
+          "contentDigest": "sha256:06ace57d5fd838581268166b7cb3e41ac8bcd9f09d18fc6e06de9cf5e171cb6d",
+          "evidenceDigest": "sha256:60144f2867fea53d874af47a615cc45f3c8c0df238b162030656a67a2c876e59",
+          "verdict": "approve"
+        }
+      ]
+    },
+    {
+      "candidate": {
+        "baseSha": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "headSha": "2222222222222222222222222222222222222222",
+        "files": [
+          {
+            "path": "src/example.mjs",
+            "content": "// Synthetic candidate 2; never executed.\nexport const value = 2;\n"
+          }
+        ],
+        "contentDigest": "sha256:96498ac5690ab4b48dfca7931dd0d015549ae5328c35a45e00f79af278e17f78"
+      },
+      "checks": [
+        {
+          "name": "lint",
+          "headSha": "2222222222222222222222222222222222222222",
+          "contentDigest": "sha256:96498ac5690ab4b48dfca7931dd0d015549ae5328c35a45e00f79af278e17f78",
+          "status": "passed",
+          "log": "synthetic lint: passed",
+          "logDigest": "sha256:decc710faf16ea71236591f66ca36f552d9604bd22b3e9faf5aad4a821b3976c"
+        },
+        {
+          "name": "tests",
+          "headSha": "2222222222222222222222222222222222222222",
+          "contentDigest": "sha256:96498ac5690ab4b48dfca7931dd0d015549ae5328c35a45e00f79af278e17f78",
+          "status": "passed",
+          "log": "synthetic tests: passed",
+          "logDigest": "sha256:5ff6e15b0875a6832abba15f3727c342bdb3a3895e7ba0ad7f7ea10edadd0896"
+        }
+      ],
+      "reviews": [
+        {
+          "reviewer": "quality",
+          "headSha": "2222222222222222222222222222222222222222",
+          "contentDigest": "sha256:96498ac5690ab4b48dfca7931dd0d015549ae5328c35a45e00f79af278e17f78",
+          "evidenceDigest": "sha256:cf90409df9b1c5b01c0c6c428f55ae8101fe1d7c02c9030ad4cb8b1462ce96b6",
+          "verdict": "approve"
+        },
+        {
+          "reviewer": "security",
+          "headSha": "2222222222222222222222222222222222222222",
+          "contentDigest": "sha256:96498ac5690ab4b48dfca7931dd0d015549ae5328c35a45e00f79af278e17f78",
+          "evidenceDigest": "sha256:cf90409df9b1c5b01c0c6c428f55ae8101fe1d7c02c9030ad4cb8b1462ce96b6",
+          "verdict": "approve"
+        }
+      ]
+    }
+  ]
+}

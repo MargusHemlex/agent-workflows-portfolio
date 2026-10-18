@@ -1,0 +1,6 @@
+node_modules/
+pipeline-output/
+coverage/
+.env*
+*.log
+.DS_Store
