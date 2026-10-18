@@ -1,6 +1,8 @@
 # Release checklist
 
-Keep this repository **private** until the owner's final publication decision.
+The owner approved publication on **18 October 2026**, after the final review of
+`b9e414bd2f5b2fec980551fd23a322264cd5039c`. Both Codex reviewers, Claude Code and
+Kimi K3 returned PASS. The original engine remains private and unchanged.
 
 Before publication:
 

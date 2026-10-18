@@ -7,7 +7,8 @@ to the same revision, and how missing or stale confirmation stops a handoff.
 This is a standalone implementation with authored synthetic fixtures. It does not
 ship the private workflow engine, execute candidate code, call a model, run a real
 review, or push/merge/deploy anything. No API keys or project credentials are required.
-The GitHub repository stays **private until the owner's final publication decision**.
+The owner approved public release on **18 October 2026**, after the final review.
+The original engine remains private and unchanged.
 
 ## Why this exists
 

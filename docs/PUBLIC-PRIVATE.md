@@ -1,8 +1,8 @@
 # Public/private boundary and data handling
 
-The portfolio repository is **private during preparation**. Final publication requires
-an explicit owner decision after review. The original repository remains private and
-its source/configuration/deployment are not changed by this edition.
+The owner approved public release of the portfolio on **18 October 2026**, after
+final review. The original repository remains **private** and its source,
+configuration and deployment are unchanged.
 
 | Intended public portfolio                              | Private original                                               |
 | ------------------------------------------------------ | -------------------------------------------------------------- |
